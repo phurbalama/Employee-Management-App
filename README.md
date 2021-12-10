@@ -3,10 +3,10 @@ Full Stack Application with React and Spring Boot
 
 ### Features
 
--Add Employees information
--Save Employee information
--Delete Employee information
--Update Employee information
+- Add Employees information
+- Save Employee information
+- Delete Employee information
+- Update Employee information
 
 ### Technologies
 

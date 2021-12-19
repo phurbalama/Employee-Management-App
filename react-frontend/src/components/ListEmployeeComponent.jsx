@@ -8,12 +8,26 @@ function ListEmployeeComponent() {
         const [employees, setEmployee] = useState([]);
        
     
+        
     //method gets called before rendering
     useEffect(()=>{
-        EmployeeService.getEmployees().then((res)  =>{
-            setEmployee(res.data)
-    })
+        EmployeeService.getEmployees().
+        then((res)  =>{setEmployee(res.data)})
+        .catch(error => handleError(error))
 },[])
+    function handleError(error){
+        let errorMessage=''
+        if(error.message)
+            errorMessage += error.message
+
+        if(error.response && error.response.data){
+            errorMessage += error.response.data.message
+        }
+
+        console.log(errorMessage)
+    }
+
+    
   
     let navigate = useNavigate();
     function addEmployee(){
@@ -67,6 +81,7 @@ function ListEmployeeComponent() {
                         }
                     </tbody>
                 </table>
+
                 </div>
             </div>
         );

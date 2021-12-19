@@ -15,6 +15,7 @@ function LoginComponent() {
        if(username==='admin' && password === 'admin'){
            AuthenticationService.registerSuccessfulLogin(username,password)
            setShowSuccess(true)
+           //navigate(`/welcome/${username}`)
            navigate('/employees')
        }
        else{

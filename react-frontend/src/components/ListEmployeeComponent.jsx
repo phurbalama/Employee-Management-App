@@ -14,7 +14,7 @@ function ListEmployeeComponent() {
             setEmployee(res.data)
     })
 },[])
-   
+  
     let navigate = useNavigate();
     function addEmployee(){
         navigate('/add-employee/_add');

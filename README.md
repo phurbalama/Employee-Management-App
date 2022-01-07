@@ -7,6 +7,7 @@ Full Stack Application with React and Spring Boot
 - Save Employee information
 - Delete Employee information
 - Update Employee information
+- Login Authentication
 
 ### Technologies
 
@@ -20,4 +21,3 @@ Full Stack Application with React and Spring Boot
 - Visual Studio Code (JavaScript IDE)
 - Eclipse (Java IDE)
 - Tomcat Embedded Web Server
-- 

@@ -26,7 +26,13 @@ function ListEmployeeComponent() {
 
         console.log(errorMessage)
     }
+/*spring.security.user.name =admin
+spring.security.user.password=admin
 
+    <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+            </dependency>*/
     
   
     let navigate = useNavigate();

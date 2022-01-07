@@ -5,11 +5,22 @@ import config from "../services/config";
 
 class AuthenticationService {
 
-    registerSuccessfulLogin(username,password){
-        let basicAuthHeader = 'Basic '+ window.btoa(`${username}:${password}`)
+    registerSuccessfulLogin(){
+        let username = "admin"
+        let password = "admin"
+        let basicAuthHeader = 'Basic '+ window.btoa(username+":"+password)//(`${username}:${password}`)
         //keeps the session of the userinfo
         sessionStorage.setItem('authenticatedUser',username);
-        config.setupAxiosInterceptors(basicAuthHeader)
+        
+        axios.interceptors.request.use(
+            (config) => {
+                if(this.isUserLoggedIn()){
+                    config.headers.authorization = basicAuthHeader
+                }
+                return config
+            }
+        )
+        //config.setupAxiosInterceptors(basicAuthHeader)
         
     }
     logout(){

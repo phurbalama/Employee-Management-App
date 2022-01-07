@@ -21,3 +21,9 @@ Full Stack Application with React and Spring Boot
 - Visual Studio Code (JavaScript IDE)
 - Eclipse (Java IDE)
 - Tomcat Embedded Web Server
+
+
+<img src="AddEmployee.PNG" alt=" add employee page">
+
+
+<img src="EmployeeList.PNG" alt="list of all employee that are stored in mySQL db">

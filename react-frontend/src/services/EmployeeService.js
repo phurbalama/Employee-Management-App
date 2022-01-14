@@ -1,7 +1,8 @@
 //import axios from 'axios'
 import axios from '../services/config'
 
-const EMPLOYEE_API_BASE_URL = "http://localhost:8080/api/v1/employees"
+const EMPLOYEE_API_BASE_URL = "http://localhost:8080/api/v1/employees";
+
 
 
 class EmployeeService {
@@ -10,7 +11,7 @@ class EmployeeService {
        
         return axios.get(EMPLOYEE_API_BASE_URL);
     }
-
+   
     //sending form data to rest api 
     createEmployee(employee){
         return axios.post(EMPLOYEE_API_BASE_URL,employee);

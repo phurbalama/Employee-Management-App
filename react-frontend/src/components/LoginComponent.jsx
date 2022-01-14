@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthenticationService from '../services/AuthenticationService';
+import UserService from '../services/UserService';
 
 function LoginComponent() {
 
@@ -12,19 +13,23 @@ function LoginComponent() {
     let navigate = useNavigate();
    function loginClicked(e){
         e.preventDefault()
-       if(username==='admin' && password === 'admin'){
-           AuthenticationService.registerSuccessfulLogin(username,password)
-           setShowSuccess(true)
-           //navigate(`/welcome/${username}`)
-           navigate('/employees')
-       }
-       else{
-           setLoginFailed(true)
-           setShowSuccess(false)
-           
-            
-           
-       }
+        UserService.getUser().then((res)=>{
+            for(let i = 0;i<res.data.length;i++){
+                if(username===res.data[i].userName && password === res.data[i].password){
+                    AuthenticationService.registerSuccessfulLogin(username,password)
+                    setShowSuccess(true)
+                    //navigate(`/welcome/${username}`)
+                    navigate('/employees')
+                }
+            else{
+                setLoginFailed(true)
+                setShowSuccess(false)
+                
+            }
+
+            }
+        })
+       
     }
 
     return (

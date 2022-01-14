@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.phurbalama.springboot.exception.ResourceNotFoundException;
+import com.phurbalama.springboot.model.Account;
 import com.phurbalama.springboot.model.Employee;
+import com.phurbalama.springboot.repository.AccountRepository;
 import com.phurbalama.springboot.repository.EmployeeRepository;
 
 @CrossOrigin(origins="http://localhost:3000")
@@ -27,6 +29,27 @@ public class EmployeeController {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
+	
+	@Autowired
+	private AccountRepository accountRepository;
+	
+	//get the account
+	@GetMapping("/users")
+	public List<Account> getUser(){
+		return accountRepository.findAll();
+	}
+	//get the account
+	@GetMapping("/users/{id}")
+	public ResponseEntity<Account> getAccountByID(@PathVariable Long id){
+		Account account = accountRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("Account not exist with id: " +id));
+		return ResponseEntity.ok(account);
+	}
+	//create account
+	@PostMapping("/users")
+	public Account createAccount(@RequestBody Account account) {
+		return accountRepository.save(account);
+	}
 	
 	// get all the employees
 	@GetMapping("/employees")

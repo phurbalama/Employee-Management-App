@@ -5,10 +5,10 @@ import config from "../services/config";
 
 class AuthenticationService {
 
-    registerSuccessfulLogin(){
-        let username = "admin"
-        let password = "admin"
+    registerSuccessfulLogin(username,password){
+        
         let basicAuthHeader = 'Basic '+ window.btoa(username+":"+password)//(`${username}:${password}`)
+        
         //keeps the session of the userinfo
         sessionStorage.setItem('authenticatedUser',username);
         
